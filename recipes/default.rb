@@ -20,6 +20,28 @@ package 'mongodb-org' do
    action :upgrade
 end
 
+# Delete original configuration files
+
+link '/etc/mongod/mongod.conf' do
+  action :delete
+end
+
+link '/etc/systemd/system/mongod.service' do
+  action :delete
+end
+
+# Place custom config files into original config folder
+
+template '/etc/mongod.conf' do
+  source 'mongod.conf.erb'
+end
+
+template '/etc/systemd/system/mongod.service' do
+  source 'mongod.service.erb'
+end
+
+# enables and starts mongod
+
 service 'mongod' do
   supports status: true, restart: true, reload: true
   action [:enable, :start]
