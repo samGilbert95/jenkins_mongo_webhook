@@ -9,7 +9,7 @@ This project tasked me with developing a series of tests, then pass those accord
 ### Tech used
 ---
 ##### Languages
-Chef was used to create and run the tests
+Chef was used to create and run the tests..
 
 ### Challenges
 ---
